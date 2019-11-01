@@ -20,7 +20,7 @@ namespace DatingApp.API.Controllers
 
         }
         // GET api/values
-        //Test
+        //test
         [HttpGet]
         public async Task<ActionResult> GetValues()
         {
