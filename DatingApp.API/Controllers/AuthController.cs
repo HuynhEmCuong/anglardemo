@@ -6,7 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DatingApp.API.Controllers
 {
-    public class AuthController : ControllerBase
+     [Route("api/[controller]")]
+     [ApiController]
+        public class AuthController : ControllerBase
     {
 
         private readonly IAuthRespository _repon;
@@ -14,7 +16,6 @@ namespace DatingApp.API.Controllers
         {
             _repon = repon;
         }
-
         [HttpPost("register")]
         public async Task<IActionResult> Register(userForRegisterDto userForRegister)
         {

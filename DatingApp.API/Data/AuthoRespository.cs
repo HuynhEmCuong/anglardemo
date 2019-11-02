@@ -28,26 +28,24 @@ namespace DatingApp.API.Data
             if (user == null)
                 return null;
 
-            if (!VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
+            if (!VerifyPasswordHash(password, user.Password, user.PasswordSalt))
                 return null;
 
             return user;
         }
-
-
 
         public async Task<User> Register(User user, string password)
         {
             byte[] passwordHash, passwordSalt;
             CreatePasswordHash(password, out passwordHash, out passwordSalt);
 
-            user.PasswordHash = passwordHash;
+            user.Password = passwordHash;
             user.PasswordSalt = passwordSalt;
 
-            await _context.AddAsync(user);
+            await _context.Users.AddAsync(user);
             await _context.SaveChangesAsync();
-            return user;
 
+            return user;
         }
 
         private void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
