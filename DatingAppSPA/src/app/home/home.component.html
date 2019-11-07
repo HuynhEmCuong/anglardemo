@@ -9,7 +9,7 @@
         </div>
         <div class="row justify-content-center">
             <div class="col-4" *ngIf="isRegister">
-                <app-resgiter [valueFormHome]="values"></app-resgiter>
+                <app-resgiter [valueFormHome]="values" (cancelRegister)="cancelRegisterMode($event)"></app-resgiter>
             </div>
         </div>
     </div>
