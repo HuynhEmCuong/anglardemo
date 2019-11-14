@@ -19,11 +19,20 @@ namespace DatingApp.API.Controllers
 
         private readonly IAuthRespository _repon;
         private readonly IConfiguration _config;
+
+
         public AuthController(IAuthRespository repon, IConfiguration config)
         {
             _repon = repon;
             _config = config;
         }
+
+        [HttpGet]
+        public string Test()
+        {
+            return "Ahihi";
+        }
+
         [HttpPost("register")]
         public async Task<IActionResult> Register(userForRegisterDto userForRegister)
         {
