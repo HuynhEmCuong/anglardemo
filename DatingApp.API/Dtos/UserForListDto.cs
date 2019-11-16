@@ -6,10 +6,10 @@ namespace DatingApp.API.Dtos
     {
         public int Id { get; set; }
 
-        public string UserName { get; set; }    
+        public string UserName { get; set; }
 
         public string Gender { get; set; }
-
+        public int Age { get; set; }
         public DateTime DateOfBirth { get; set; }
 
         public string KnowAs { get; set; }
