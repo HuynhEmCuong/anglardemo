@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DatingApp.API.Controllers
 {
-  
+
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
@@ -22,7 +22,7 @@ namespace DatingApp.API.Controllers
             _mapper = mapper;
             _repon = repon;
         }
-      
+
 
         [HttpGet]
         public async Task<IActionResult> GetUsers()
