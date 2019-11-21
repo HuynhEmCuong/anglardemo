@@ -5,7 +5,9 @@ import { MessageComponent } from './message/message.component';
 import { ListsComponent } from './lists/lists.component';
 import { AuthGuard } from './_guards/auth.guard';
 import { MemberDetailComponent } from './member/member-detail/member-detail.component';
-// import { MemberDetaiResolver } from './_resolvers/member-detail.resolver';
+import { MemberEditComponent } from './member/member-edit/member-edit.component';
+
+
 
 
 
@@ -13,7 +15,8 @@ import { MemberDetailComponent } from './member/member-detail/member-detail.comp
 export const appRoutes: Routes = [
     { path: 'home', component: HomeComponent },
     { path: 'members', component: MemberListComponent, canActivate: [AuthGuard] },
-    { path: 'members/:id', component: MemberDetailComponent, canActivate: [AuthGuard], },
+    { path: 'members/detail/:id', component: MemberDetailComponent, canActivate: [AuthGuard] },
+    { path: 'members/edit/:id', component: MemberEditComponent },
     { path: 'message', component: MessageComponent },
     { path: 'lists', component: ListsComponent },
     { path: '**', redirectTo: 'home', pathMatch: 'full' },

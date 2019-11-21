@@ -1,6 +1,7 @@
 <div class="container mt-5">
   <div class="row">
     <div class="col-md-4">
+      <h3>Profile</h3>
       <div class="card">
         <img
           class="card-img-top img-thumbnail"
@@ -29,31 +30,42 @@
 
           <div class="card-footer">
             <div class="btn-group d-flex">
-              <button class="btn btn-primary w-100 mr-4">Like</button>
-              <button class="btn btn-success w-100">Message</button>
+              <button class="btn btn-success w-100">Save change</button>
             </div>
           </div>
         </div>
       </div>
     </div>
     <div class="col-md-8">
+      <div class="alert alert-success">
+        Information:You change
+      </div>
       <div class="tab-panel">
         <tabset>
-          <tab heading="About {{ user?.knownAs }}">
-            <h4>Description</h4>
-            <p>{{ user?.introduction }}</p>
+          <tab heading="Edit Profile">
+            <textarea
+              name="Introduction"
+              class="form-control"
+              rows="6"
+              [(ngModel)]="user.introduction"
+            ></textarea>
             <h4>Looking for</h4>
-            <p>{{ user?.lookingFor }}</p>
+            <textarea
+              name="looking for"
+              class="form-control"
+              rows="6"
+              [(ngModel)]="user.lookingFor"
+            ></textarea>
+            <h4>Looking for</h4>
+            <textarea
+              name="interested"
+              class="form-control"
+              rows="6"
+              [(ngModel)]="user.interests"
+            ></textarea>
           </tab>
-          <tab heading="Interests">
-            <h4>Interests</h4>
-            <p>{{ user?.interests }}</p>
-          </tab>
-          <tab heading="Photos">
-            <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
-          </tab>
-          <tab heading="Message"> 
-            <p>Messsage </p>
+          <tab heading="Edit Photos">
+            <h4>Photo edti will go</h4>
           </tab>
         </tabset>
       </div>
