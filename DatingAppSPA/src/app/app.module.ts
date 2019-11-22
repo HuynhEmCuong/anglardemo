@@ -26,6 +26,7 @@ import { MemberDetailComponent } from './member/member-detail/member-detail.comp
 import { MemberDetaiResolver } from './_resolvers/member-detail.resolver';
 import { NgxGalleryModule } from 'ngx-gallery';
 import { MemberEditComponent } from './member/member-edit/member-edit.component';
+import { PreventUnsavedChange } from './_guards/prevent-unsave-changes.guard';
 
 
 @NgModule({
@@ -56,7 +57,8 @@ import { MemberEditComponent } from './member/member-edit/member-edit.component'
       AlertifyService,
       AuthGuard,
       UserService,
-      MemberDetaiResolver
+      MemberDetaiResolver,
+      PreventUnsavedChange
    ],
    bootstrap: [
       AppComponent
