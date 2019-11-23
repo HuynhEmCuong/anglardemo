@@ -37,19 +37,17 @@
       </div>
     </div>
     <div class="col-md-8">
-      <div *ngIf="editForm.dirty" class="alert alert-success">
+      <!-- <div *ngIf="editForm.dirty" class="alert alert-success">
         Information:You change
-      </div>
-      <div class="tab-panel">
-        <tabset>
-          <tab heading="Edit Profile">
+      </div> -->
+      <div class="tab-panel">              
             <form #editForm="ngForm" id="editForm" (ngSubmit)="updateUser()">
               <textarea
                 name="Introduction"
                 class="form-control"
                 rows="6"
-                [(ngModel)]="user.introduction"
-              ></textarea>
+                [(ngModel)]="user.introduction">
+              </textarea>
               <h4>Looking for</h4>
               <textarea
                 name="looking for"
@@ -66,12 +64,7 @@
               ></textarea>
               <p>City</p>
               <input type="text" name="city" class="form-control" [(ngModel)]="user.city">
-            </form>
-          </tab>
-          <tab heading="Edit Photos">
-            <h4>Photo edti will go</h4>
-          </tab>
-        </tabset>
+            </form>          
       </div>
     </div>
   </div>

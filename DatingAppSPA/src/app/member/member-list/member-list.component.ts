@@ -25,5 +25,10 @@ export class MemberListComponent implements OnInit {
     }
     );
   }
+  isLoadUser(isLoad: any) {
+    if (isLoad) {
+      this.loadUSer();
+    }
+  }
 
 }

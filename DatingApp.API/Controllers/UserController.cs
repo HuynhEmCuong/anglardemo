@@ -56,5 +56,15 @@ namespace DatingApp.API.Controllers
 
             throw new Exception($"Update user {id} faild  on save");
         }
+
+        [HttpPut("delete/{id}")]
+        public async Task<IActionResult> DeleteUser(int id)
+        {
+            var userDelete = await _repon.GetUser(id);
+            _repon.Delete(userDelete);
+            if (await _repon.SaveAll())
+                return NoContent();
+            throw new Exception($"Update user  faild  on save");
+        }
     }
 }
