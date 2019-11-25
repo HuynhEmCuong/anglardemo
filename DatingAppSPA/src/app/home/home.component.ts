@@ -30,4 +30,5 @@ export class HomeComponent implements OnInit {
     this.isRegister = cancelRegister;
   }
 
+
 }
