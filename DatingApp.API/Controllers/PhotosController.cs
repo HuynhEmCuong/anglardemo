@@ -19,8 +19,8 @@ namespace DatingApp.API.Controllers
         private readonly IDatingRepository _repon;
         private readonly IMapper _mapper;
         private Cloudinary _cloudinary;
-
-        private  IOptions<CloudinarySettings> _cloundinaryConfig;
+        private IOptions<CloudinarySettings> _cloundinaryConfig;
+        
         public PhotosController(IDatingRepository repon, IMapper mapper, IOptions<CloudinarySettings> cloundinaryConfig)
         {
             _mapper = mapper;
@@ -31,11 +31,6 @@ namespace DatingApp.API.Controllers
                 _cloundinaryConfig.Value.ApiKey,
                 _cloundinaryConfig.Value.ApiSecret);
 
-
-            //Config cloudinary
-            // Account acc = new Account("dl4lrtlzy",
-            //                           "446767749245166",
-            //                           "p3gjJFbfR3YeWD2dtcqLKpCnbSA");
             _cloudinary = new Cloudinary(acc);
         }
 
@@ -62,7 +57,7 @@ namespace DatingApp.API.Controllers
                 {
                     var uploadParams = new ImageUploadParams()
                     {
-                        File = new FileDescription(file.Name, stream),
+                        File = new FileDescription(file.FileName, stream),
                         Transformation = new Transformation().Width(500).Height(500).Crop("fill").Gravity("face")
                     };
                     uploadResult = _cloudinary.Upload(uploadParams);
