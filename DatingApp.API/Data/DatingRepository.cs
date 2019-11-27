@@ -38,7 +38,7 @@ namespace DatingApp.API.Data
 
         public async Task<IEnumerable<User>> GetUsers()
         {
-            var users = await _context.Users.Include(p => p.Photos).Take(8).ToListAsync();
+            var users = await _context.Users.Include(p => p.Photos).OrderByDescending(x => x.Created).Take(8).ToListAsync();
             return users;
         }
 
