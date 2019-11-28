@@ -1,8 +1,10 @@
 <div class="card mb-4">
   <div class="card-img-wrappper">
     <img
-      class="card-img-top"
-      src="{{ user.photoUrl }}"
+      class="card-img-top img-thumbnail"
+      width="100"
+      height="100"
+      src="{{ user.photoUrl || '../../../assets/image/1.jpg'}}"
       alt="{{ user.knownAs }}"
     />
     <ul class="list-inline member-icons animate text-center">

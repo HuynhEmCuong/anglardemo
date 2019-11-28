@@ -9,7 +9,7 @@ namespace DatingApp.API.Helpers
         {
             response.Headers.Add("Application-Error", message);
             response.Headers.Add("Access-Control-Expose-Headers", "Application-Error");
-            response.Headers.Add("Access-Control-Allow-Orogin", message);
+            response.Headers.Add("Access-Control-Allow-Orogin", "*");
         }
 
         public static int CelculateAge(this DateTime theDateTime)

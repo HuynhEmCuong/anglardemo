@@ -27,6 +27,7 @@ import { MemberDetaiResolver } from './_resolvers/member-detail.resolver';
 import { NgxGalleryModule } from 'ngx-gallery';
 import { MemberEditComponent } from './member/member-edit/member-edit.component';
 import { PreventUnsavedChange } from './_guards/prevent-unsave-changes.guard';
+import { TimeAgoPipe } from 'time-ago-pipe';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { PreventUnsavedChange } from './_guards/prevent-unsave-changes.guard';
       MessageComponent,
       MemberCardComponent,
       MemberDetailComponent,
-      MemberEditComponent
+      MemberEditComponent,
+      TimeAgoPipe
    ],
    imports: [
       BrowserModule,

@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 using AutoMapper;
 using DatingApp.API.Data;
 using DatingApp.API.Dtos;
-using Microsoft.AspNetCore.Authorization;
+using DatingApp.API.Helpers;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DatingApp.API.Controllers
 {
-
+    //[ServiceFilter(typeof(LogUserActive))]
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
@@ -36,6 +36,11 @@ namespace DatingApp.API.Controllers
         [HttpGet("{id}", Name = "GetUser")]
         public async Task<IActionResult> GetUser(int id)
         {
+            var test = User;
+            int ide = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            // if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+            //     return Unauthorized();
+
             var user = await _repon.GetUser(id);
             var userToReturn = _mapper.Map<UserForDetailedDto>(user);
             return Ok(userToReturn);

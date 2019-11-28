@@ -29,11 +29,6 @@ namespace DatingApp.API.Controllers
             _config = config;
         }
 
-        [HttpGet]
-        public string Test()
-        {
-            return "Ahihi";
-        }
 
         [HttpPost("register")]
         public async Task<IActionResult> Register(userForRegisterDto userForRegister)
@@ -61,9 +56,11 @@ namespace DatingApp.API.Controllers
 
             var claims = new[]
             {
-                new Claim(ClaimTypes.NameIdentifier,userFromRepo.Id.ToString()),
+                new Claim(ClaimTypes.NameIdentifier,userFromRepo.Id.ToString(),ClaimValueTypes.Integer),
                 new Claim(ClaimTypes.Name,userFromRepo.UserName)
              };
+
+
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config.GetSection("AppSettings:Token").Value));
 
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
@@ -76,6 +73,7 @@ namespace DatingApp.API.Controllers
             };
             var tokenHandler = new JwtSecurityTokenHandler();
             var token = tokenHandler.CreateToken(tokenDescriptor);
+            var user = _mapper.Map<UserForListDto>(userFromRepo);
             return Ok(
                 new
                 {
