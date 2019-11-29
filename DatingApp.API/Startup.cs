@@ -47,17 +47,17 @@ namespace DatingApp.API
             services.AddScoped<IAuthRespository, AuthoRespository>();
             services.AddScoped<IDatingRepository, DatingRepository>();
 
-            services.AddScoped<LogUserActive>();
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
-            {
-                options.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Configuration.GetSection("AppSettings:Token").Value)),
-                    ValidateIssuer = false,
-                    ValidateAudience = false
-                };
-            });
+            // services.AddScoped<LogUserActive>();
+            // // services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+            // // {
+            // //     options.TokenValidationParameters = new TokenValidationParameters
+            // //     {
+            // //         ValidateIssuerSigningKey = true,
+            // //         IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Configuration.GetSection("AppSettings:Token").Value)),
+            // //         ValidateIssuer = false,
+            // //         ValidateAudience = false
+            // //     };
+            // // });
 
         }
 
@@ -86,12 +86,7 @@ namespace DatingApp.API
                 });
             }
             app.UseAuthentication();
-
-
             app.UseHttpsRedirection();
-
-            // seeder.SeedUser ();
-            //app.UseAuthentication();
             app.UseMvc();
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
         }

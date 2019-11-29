@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DatingApp.API.Controllers
 {
-    //[ServiceFilter(typeof(LogUserActive))]
+
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
@@ -27,20 +27,19 @@ namespace DatingApp.API.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> GetUsers()
+        public async Task<IActionResult> GetUsers([FromQuery]UserParmas userParmas)
         {
-            var users = await _repon.GetUsers();
+            var users = await _repon.GetUsers(userParmas);
             var userToReturn = _mapper.Map<IEnumerable<UserForListDto>>(users);
+            Response.AddPagination(users.CurrentPage, users.PageSize, users.TotalCount, users.TotalPages);
+
             return Ok(userToReturn);
         }
+
+
         [HttpGet("{id}", Name = "GetUser")]
         public async Task<IActionResult> GetUser(int id)
         {
-            var test = User;
-            int ide = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
-            // if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
-            //     return Unauthorized();
-
             var user = await _repon.GetUser(id);
             var userToReturn = _mapper.Map<UserForDetailedDto>(user);
             return Ok(userToReturn);
@@ -50,8 +49,6 @@ namespace DatingApp.API.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateUser(int id, UserForUpdateDto userForUpdate)
         {
-            // if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
-            //     return Unauthorized();
             var userFormRepo = await _repon.GetUser(id);
 
             _mapper.Map(userForUpdate, userFormRepo);

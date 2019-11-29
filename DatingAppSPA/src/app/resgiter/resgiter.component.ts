@@ -54,16 +54,18 @@ export class ResgiterComponent implements OnInit {
 
   Register() {
     if (this.registerForm.valid) {
+      // tslint:disable-next-line:no-debugger
+      debugger;
       this.user = Object.assign({}, this.registerForm.value);
       this.authService.register(this.user).subscribe(() => {
         this.alertify.success('Register Success');
       }, error => {
         this.alertify.error(error);
 
-      }, () => {
-        this.authService.login(this.user).subscribe(() => {
-          this.router.navigate(['/members']);
-        });
+      // }, () => {
+      //   this.authService.login(this.user).subscribe(() => {
+      //     this.router.navigate(['/members']);
+      //   });
       });
     }
     console.log(this.registerForm.value);

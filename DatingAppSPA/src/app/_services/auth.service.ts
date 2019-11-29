@@ -15,6 +15,8 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
   login(model: any) {
+    // tslint:disable-next-line:no-debugger
+    debugger;
     return this.http.post(this.baseUrl + 'login', model).
       pipe(
         map((respone: any) => {
@@ -27,6 +29,8 @@ export class AuthService {
       );
   }
   register(user: User) {
+    // tslint:disable-next-line:no-debugger
+    debugger;
     return this.http.post(this.baseUrl + 'register', user);
   }
 
